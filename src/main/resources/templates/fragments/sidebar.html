@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+  <aside th:fragment="sidebar"
+         th:if="${#authentication != null && #authentication.isAuthenticated()}">
+    <ul class="sidebar-menu">
+      <li><a th:href="@{/catalog}">Catálogo</a></li>
+      <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/dashboard}">Dashboard</a></li>
+      <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/content}">Gestión de Contenido</a></li>
+      <li sec:authorize="hasRole('ROLE_STUDENT')"><a th:href="@{/my-courses}">Mis Cursos</a></li>
+    </ul>
+  </aside>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div class="catalog-view">
+  <div class="catalog-header">
+    <h1>Catálogo de Cursos</h1>
+    <form th:action="@{/catalog}" method="get" class="catalog-filters">
+      <select name="category" class="catalog-filter" onchange="this.form.submit()">
+        <option value="">Todas las categorías</option>
+        <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat}"
+                th:selected="${param.category != null && param.category[0] == cat}"></option>
+      </select>
+      <input type="text" name="q" class="catalog-search" placeholder="Buscar cursos..."
+             th:value="${param.q != null ? param.q[0] : ''}" />
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+  </div>
+  <div class="catalog-grid" th:if="${!courses.isEmpty()}">
+    <article class="course-card" th:each="c : ${courses}"
+             onclick="window.location.href = '/catalog/' + [[${c.id}]]">
+      <img th:src="${c.thumbnail} ?: 'https://via.placeholder.com/320x180'" th:alt="${c.title}" />
+      <div class="course-card-body">
+        <span class="course-category" th:text="${c.category}"></span>
+        <h3 th:text="${c.title}"></h3>
+        <p th:text="${c.description}"></p>
+        <span class="course-duration" th:text="${c.duration}"></span>
+      </div>
+    </article>
+  </div>
+  <div class="empty-state" th:if="${courses.isEmpty()}">
+    <p>No se encontraron cursos.</p>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+  <header th:fragment="header">
+    <div class="header-logo">Willo Academy</div>
+    <nav class="header-nav"
+         th:if="${#authentication != null && #authentication.isAuthenticated()}">
+      <span class="header-user" sec:authentication="name"></span>
+      <a th:href="@{/logout}" class="btn-link">Cerrar sesión</a>
+    </nav>
+    <nav class="header-nav"
+         th:unless="${#authentication != null && #authentication.isAuthenticated()}">
+      <a th:href="@{/auth/login}" class="btn-link">Ingresar</a>
+    </nav>
+  </header>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<div class="dashboard-view">
+  <h1>Panel de Administración</h1>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Usuarios Activos</span>
+      <span class="stat-value" th:text="${stats.activeUsers}"></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Cursos Publicados</span>
+      <span class="stat-value" th:text="${stats.publishedCourses}"></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Lecciones Completadas</span>
+      <span class="stat-value" th:text="${stats.completedLessons}"></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Ingresos</span>
+      <span class="stat-value" th:text="'$' + ${stats.revenue}"></span>
+    </div>
+  </div>
+  <section class="chart-section">
+    <h2>Progreso Semanal</h2>
+    <canvas id="progress-chart" width="600" height="200"></canvas>
+  </section>
+</div>
+<script th:inline="javascript">
+  const data = [[${weeklyData}]];
+  if (data && data.length) {
+    const canvas = document.getElementById('progress-chart');
+    const ctx = canvas.getContext('2d');
+    const max = Math.max(...data.map(d => d[1]), 1);
+    const barWidth = canvas.width / data.length - 8;
+    data.forEach((d, i) => {
+      const h = (d[1] / max) * (canvas.height - 20);
+      ctx.fillStyle = '#6C63FF';
+      ctx.fillRect(i * (barWidth + 8) + 4, canvas.height - h - 10, barWidth, h);
+      ctx.fillStyle = '#666';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(d[0], i * (barWidth + 8) + barWidth / 2 + 4, canvas.height - 2);
+    });
+  }
+</script>

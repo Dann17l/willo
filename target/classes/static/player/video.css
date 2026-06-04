@@ -1,0 +1,51 @@
+.player-view {
+  padding: 24px;
+}
+
+.player-container {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+.player-video {
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+}
+
+.player-sidebar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.player-sidebar h2 {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+}
+
+.player-sidebar p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+}
+
+.player-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.player-progress progress {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.player-progress progress::-webkit-progress-value {
+  background: var(--color-primary);
+  border-radius: 4px;
+}

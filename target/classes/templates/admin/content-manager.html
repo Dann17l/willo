@@ -1,0 +1,95 @@
+<div class="content-manager-view">
+  <div class="content-header">
+    <h1>Gestión de Contenido</h1>
+    <button id="btn-new-course" class="btn btn-primary" onclick="openForm(null)">Nuevo Curso</button>
+  </div>
+  <p th:if="${success}" class="alert-success" th:text="${success}"></p>
+  <p th:if="${error}" class="alert-error" th:text="${error}"></p>
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Categoría</th>
+        <th>Lecciones</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="c : ${courses}">
+        <td th:text="${c.title}"></td>
+        <td th:text="${c.category}"></td>
+        <td th:text="${c.lessonsCount} ?: 0"></td>
+        <td><span class="badge" th:classappend="'badge-' + ${c.status}" th:text="${c.status}"></span></td>
+        <td>
+          <button class="btn-sm btn-edit" th:onclick="'openForm(' + [[${c.id}]] + ')'">Editar</button>
+          <form th:action="@{/admin/content/delete/{id}(id=${c.id})}" method="post" style="display:inline"
+                onsubmit="return confirm('¿Eliminar este curso?')">
+            <button type="submit" class="btn-sm btn-delete">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="course-modal" class="modal-overlay hidden">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeForm()">&times;</button>
+    <form th:action="@{/admin/content/save}" method="post" class="modal-body">
+      <input type="hidden" id="form-id" name="id" />
+      <h2 id="modal-title">Nuevo Curso</h2>
+      <div class="form-group">
+        <label for="form-title">Título</label>
+        <input type="text" id="form-title" name="title" required />
+      </div>
+      <div class="form-group">
+        <label for="form-description">Descripción</label>
+        <textarea id="form-description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="form-category">Categoría</label>
+        <input type="text" id="form-category" name="category" />
+      </div>
+      <div class="form-group">
+        <label for="form-duration">Duración</label>
+        <input type="text" id="form-duration" name="duration" />
+      </div>
+      <div class="form-group">
+        <label for="form-thumbnail">URL de imagen</label>
+        <input type="url" id="form-thumbnail" name="thumbnail" />
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openForm(id) {
+    const modal = document.getElementById('course-modal');
+    document.getElementById('form-id').value = '';
+    document.getElementById('form-title').value = '';
+    document.getElementById('form-description').value = '';
+    document.getElementById('form-category').value = '';
+    document.getElementById('form-duration').value = '';
+    document.getElementById('form-thumbnail').value = '';
+    document.getElementById('modal-title').textContent = 'Nuevo Curso';
+    if (id) {
+      fetch('/admin/content/api/' + id)
+        .then(r => r.json())
+        .then(c => {
+          document.getElementById('form-id').value = c.id;
+          document.getElementById('form-title').value = c.title;
+          document.getElementById('form-description').value = c.description;
+          document.getElementById('form-category').value = c.category;
+          document.getElementById('form-duration').value = c.duration;
+          document.getElementById('form-thumbnail').value = c.thumbnail;
+          document.getElementById('modal-title').textContent = 'Editar Curso';
+        });
+    }
+    modal.classList.remove('hidden');
+  }
+  function closeForm() {
+    document.getElementById('course-modal').classList.add('hidden');
+  }
+</script>

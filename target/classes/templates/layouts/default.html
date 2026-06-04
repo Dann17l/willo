@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title th:text="${title} ?: 'Willo Academy'">Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" th:href="@{/css/app.css}" />
+  <link rel="stylesheet" th:href="@{/auth/login.css}" />
+  <link rel="stylesheet" th:href="@{/catalog/list.css}" />
+  <link rel="stylesheet" th:href="@{/catalog/detail.css}" />
+  <link rel="stylesheet" th:href="@{/player/video.css}" />
+  <link rel="stylesheet" th:href="@{/admin/dashboard.css}" />
+  <link rel="stylesheet" th:href="@{/admin/content-manager.css}" />
+</head>
+<body>
+  <div id="app">
+    <header id="app-header" th:replace="fragments/header :: header"></header>
+    <div id="app-body">
+      <aside id="app-sidebar" th:replace="fragments/sidebar :: sidebar"></aside>
+      <main id="app-outlet">
+        <th:block th:include="${contentView}"></th:block>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

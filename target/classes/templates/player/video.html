@@ -1,0 +1,33 @@
+<div class="player-view">
+  <div class="player-container">
+    <video id="lesson-video" class="player-video" controls>
+      <source th:src="${lesson.videoUrl}" type="video/mp4" />
+    </video>
+    <div class="player-sidebar">
+      <h2 th:text="${lesson.title}"></h2>
+      <p th:text="${lesson.description}"></p>
+      <div class="player-progress">
+        <span th:text="'Progreso: ' + ${lesson.progress} + '%'"></span>
+        <progress th:value="${lesson.progress}" max="100"></progress>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:inline="javascript">
+  const video = document.getElementById('lesson-video');
+  const lessonId = [[${lesson.id}]];
+  if (video) {
+    video.addEventListener('timeupdate', () => {
+      const pct = Math.round((video.currentTime / video.duration) * 100);
+      document.querySelector('.player-progress progress').value = pct;
+      document.querySelector('.player-progress span').textContent = 'Progreso: ' + pct + '%';
+    });
+    video.addEventListener('ended', () => {
+      fetch('/player/' + lessonId + '/progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ progress: 100 })
+      });
+    });
+  }
+</script>
