@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Privacidad — Configuración Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+<link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('preferences')}"></div>
+
+    <main class="dash-main">
+      <div class="settings-layout">
+        <!-- Inner Sidebar -->
+        <div th:replace="~{fragments/settings-sidebar :: sidebar('privacy')}"></div>
+
+        <!-- Content -->
+        <div class="settings-content">
+          <h2>Privacidad</h2>
+          <p class="subtitle">Controla quién puede ver tu actividad e información en Willo Academy.</p>
+
+          <div style="border: 1px solid var(--landing-border); padding: 24px; border-radius: 12px; background: var(--landing-surface); margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Perfil Público</h3>
+                <p style="color: var(--landing-text-secondary); font-size: 0.9rem;">Hacer que tu perfil sea visible para todo el mundo.</p>
+              </div>
+              <label class="switch" style="position:relative; display:inline-block; width:44px; height:24px;">
+                <input type="checkbox" checked style="opacity:0; width:0; height:0;">
+                <span class="slider" style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:var(--landing-accent); transition:.4s; border-radius:34px;">
+                  <span style="position:absolute; content:''; height:18px; width:18px; left:23px; bottom:3px; background-color:white; transition:.4s; border-radius:50%;"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div style="border: 1px solid var(--landing-border); padding: 24px; border-radius: 12px; background: var(--landing-surface);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Mostrar cursos en progreso</h3>
+                <p style="color: var(--landing-text-secondary); font-size: 0.9rem;">Los usuarios podrán ver qué estás estudiando actualmente.</p>
+              </div>
+              <label class="switch" style="position:relative; display:inline-block; width:44px; height:24px;">
+                <input type="checkbox" style="opacity:0; width:0; height:0;">
+                <span class="slider" style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:var(--landing-border); transition:.4s; border-radius:34px;">
+                  <span style="position:absolute; content:''; height:18px; width:18px; left:3px; bottom:3px; background-color:white; transition:.4s; border-radius:50%;"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

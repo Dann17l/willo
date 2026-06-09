@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Perfil — Configuración Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+  <link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('preferences')}"></div>
+
+    <main class="dash-main">
+      <div class="settings-layout">
+        <!-- Inner Sidebar -->
+        <div th:replace="~{fragments/settings-sidebar :: sidebar('profile')}"></div>
+
+        <!-- Content -->
+        <div class="settings-content">
+          <h2 class="text-3xl font-extrabold mb-2 text-landing-text">Perfil público</h2>
+          <p class="subtitle mb-8 text-landing-text-secondary">Añade información sobre ti.</p>
+
+          <form class="flex flex-col gap-6">
+            <div class="flex flex-col sm:flex-row gap-6 items-center border border-landing-border p-6 rounded-xl bg-landing-surface">
+              <img src="https://ui-avatars.com/api/?name=Estudiante+Willo&background=8B5CF6&color=fff&size=200" alt="Avatar" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover" />
+              <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                <p class="text-sm font-semibold mb-3 text-landing-text">Foto de perfil</p>
+                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                  <input type="file" id="file-upload" class="hidden" accept="image/*" onchange="alert('Simulación: Has seleccionado la imagen ' + this.files[0].name)" />
+                  <button type="button" class="landing-btn landing-btn--primary w-full sm:w-auto" onclick="document.getElementById('file-upload').click()">Subir foto</button>
+                  <button type="button" class="landing-btn landing-btn--ghost w-full sm:w-auto" onclick="alert('Simulación: Tu foto de perfil ha sido eliminada.')">Eliminar</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-6">
+              <div class="flex-1">
+                <label class="block text-sm font-semibold mb-2 text-landing-text">Nombre</label>
+                <input type="text" value="Estudiante" class="w-full p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors" />
+              </div>
+              <div class="flex-1">
+                <label class="block text-sm font-semibold mb-2 text-landing-text">Apellidos</label>
+                <input type="text" value="Willo" class="w-full p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-landing-text">Titular (Ej: Desarrollador Web y Entusiasta Cloud)</label>
+              <input type="text" placeholder="Añade un titular profesional" class="w-full p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-landing-text">Biografía</label>
+              <textarea rows="5" placeholder="Cuéntanos sobre ti, tus metas y lo que estás aprendiendo..." class="w-full p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors resize-y"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-landing-text">Enlaces (Redes sociales y portafolio)</label>
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="bg-landing-surface border border-landing-border rounded-lg p-3 w-12 flex justify-center text-landing-text-secondary"><i class="fa-brands fa-linkedin"></i></div>
+                  <input type="text" placeholder="URL de tu perfil de LinkedIn" class="flex-1 p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors" />
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="bg-landing-surface border border-landing-border rounded-lg p-3 w-12 flex justify-center text-landing-text-secondary"><i class="fa-brands fa-github"></i></div>
+                  <input type="text" placeholder="URL de tu perfil de GitHub" class="flex-1 p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors" />
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="bg-landing-surface border border-landing-border rounded-lg p-3 w-12 flex justify-center text-landing-text-secondary"><i class="fa-solid fa-link"></i></div>
+                  <input type="text" placeholder="Sitio web personal o portafolio" class="flex-1 p-3 rounded-lg border border-landing-border bg-landing-bg text-landing-text font-inherit focus:outline-none focus:border-landing-accent transition-colors" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button type="button" class="landing-btn landing-btn--primary px-8 py-3 w-full sm:w-auto text-base">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Mis Certificados — Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+  <style>
+    .cert-header {
+      margin-bottom: 40px;
+    }
+    .cert-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .cert-header p {
+      color: var(--landing-text-secondary);
+      font-size: 1.05rem;
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .cert-card {
+      background: var(--landing-surface);
+      border: 1px solid var(--landing-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cert-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--landing-card-shadow-hover);
+    }
+    .cert-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--landing-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .cert-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--landing-text);
+      margin-bottom: 8px;
+    }
+    .cert-date {
+      font-size: 0.85rem;
+      color: var(--landing-text-secondary);
+      margin-bottom: 24px;
+    }
+    .cert-actions {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+    }
+    .cert-actions button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+  </style>
+<link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('certificates')}"></div>
+
+    <main class="dash-main">
+      <div class="cert-header">
+        <h1>Mis Certificados</h1>
+        <p>Aquí puedes ver y descargar todos los logros que has obtenido.</p>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon"><i class="fa-brands fa-react"></i></div>
+          <div class="cert-title">React Moderno: De cero a experto</div>
+          <div class="cert-date">Obtenido el 15 de Mayo, 2026</div>
+          <div class="cert-actions">
+            <button class="landing-btn landing-btn--primary" style="padding: 10px;"><i class="fa-solid fa-download"></i> PDF</button>
+            <button class="landing-btn landing-btn--ghost" style="padding: 10px;"><i class="fa-solid fa-share-nodes"></i></button>
+          </div>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon" style="background: rgba(16, 185, 129, 0.1); color: #10B981;"><i class="fa-brands fa-node-js"></i></div>
+          <div class="cert-title">Node.js y Express Frontend</div>
+          <div class="cert-date">Obtenido el 3 de Abril, 2026</div>
+          <div class="cert-actions">
+            <button class="landing-btn landing-btn--primary" style="padding: 10px;"><i class="fa-solid fa-download"></i> PDF</button>
+            <button class="landing-btn landing-btn--ghost" style="padding: 10px;"><i class="fa-solid fa-share-nodes"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

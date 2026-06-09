@@ -1,0 +1,31 @@
+<aside th:fragment="sidebar(activeItem)" class="dash-sidebar">
+  <ul class="dash-sidebar__menu">
+    <li class="dash-sidebar__item" th:classappend="${activeItem == 'home' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard}"><i class="fa-solid fa-house"></i> Mi Aprendizaje</a>
+    </li>
+    <li class="dash-sidebar__item" th:classappend="${activeItem == 'explore' ? 'is-active' : ''}">
+      <a href="#"><i class="fa-solid fa-compass"></i> Explorar Categorías</a>
+    </li>
+    <li class="dash-sidebar__item" th:classappend="${activeItem == 'certificates' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/certificates}"><i class="fa-solid fa-certificate"></i> Mis Certificados</a>
+    </li>
+    <li class="dash-sidebar__item" th:classappend="${activeItem == 'saved' ? 'is-active' : ''}">
+      <a href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
+    </li>
+  </ul>
+  
+  <div class="dash-sidebar__bottom">
+    <ul class="dash-sidebar__menu">
+      <li class="dash-sidebar__item" th:classappend="${activeItem == 'preferences' ? 'is-active' : ''}">
+        <a th:href="@{/dashboard/preferences}"><i class="fa-solid fa-gear"></i> Configuración</a>
+      </li>
+      <li class="dash-sidebar__item">
+        <form th:action="@{/logout}" method="post" style="display:inline; width:100%;">
+          <button type="submit" class="dash-sidebar__logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
+          </button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</aside>

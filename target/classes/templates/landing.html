@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Willo Academy — Aprende sin límites</title>
+  <meta name="description" content="Plataforma e-learning premium. Cursos en desarrollo web, ciencia de datos, diseño UX/UI, DevOps y más. Aprende a tu ritmo con los mejores profesores." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+<link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="landing-page">
+
+  <!-- ═══ Navbar ═══ -->
+  <nav class="landing-nav" id="landing-nav">
+    <div class="landing-nav__inner">
+      <div class="landing-nav__brand" id="nav-brand">
+        <img th:src="@{/willo.ico}" alt="Willo" class="landing-nav__brand-logo" id="brand-logo-toggle" />
+        <span class="landing-nav__brand-text" id="brand-text">Willo Academy</span>
+      </div>
+      <div class="landing-nav__links">
+        <a th:href="@{/catalog}" class="landing-nav__link">Catálogo</a>
+        <a th:href="@{/auth/login}" class="landing-nav__cta">Iniciar Sesión</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+          <i class="fa-solid fa-moon icon-moon"></i>
+          <i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+      </div>
+      <!-- Mobile menu button -->
+      <button class="landing-nav__mobile-btn" id="mobile-menu-btn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="landing-nav__mobile-menu" id="mobile-menu">
+      <a th:href="@{/catalog}" class="landing-nav__mobile-link">Catálogo</a>
+      <a th:href="@{/auth/login}" class="landing-nav__mobile-link landing-nav__mobile-link--cta">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <!-- ═══ Hero Section ═══ -->
+  <section class="landing-hero" id="hero">
+    <!-- Animated background blobs -->
+    <div class="landing-hero__blob landing-hero__blob--1"></div>
+    <div class="landing-hero__blob landing-hero__blob--2"></div>
+    <div class="landing-hero__blob landing-hero__blob--3"></div>
+    <!-- Floating particles -->
+    <div class="landing-hero__particles" id="particles"></div>
+    <!-- Grid overlay -->
+    <div class="landing-hero__grid"></div>
+
+    <div class="landing-hero__content">
+      <div class="landing-hero__badge">
+        <span class="landing-hero__badge-dot"></span>
+        Plataforma de aprendizaje en línea
+      </div>
+
+      <h1 class="landing-hero__title">
+        Aprende a tu ritmo.<br/>
+        <span class="landing-hero__title-accent" id="typewriter-target"></span>
+        <span class="typewriter-cursor" id="typewriter-cursor"></span>
+      </h1>
+
+      <p class="landing-hero__subtitle">
+        Accede a cursos de alta calidad en desarrollo, diseño y tecnología.
+        Avanza a tu propio ritmo con contenido creado por expertos de la industria.
+      </p>
+
+      <div class="landing-hero__actions">
+        <a th:href="@{/auth/register}" class="landing-btn landing-btn--primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Crear cuenta gratis
+        </a>
+        <a th:href="@{/plans}" class="landing-btn landing-btn--secondary">
+          Ver planes
+        </a>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="landing-hero__trust">
+        <div class="landing-hero__trust-avatars">
+          <span class="landing-hero__trust-avatar" style="background: #8B5CF6;">E</span>
+          <span class="landing-hero__trust-avatar" style="background: #6366F1;">M</span>
+          <span class="landing-hero__trust-avatar" style="background: #A78BFA;">S</span>
+          <span class="landing-hero__trust-avatar" style="background: #818CF8;">J</span>
+        </div>
+        <span class="landing-hero__trust-text">
+          <strong>+1,200</strong> estudiantes ya se unieron
+        </span>
+      </div>
+    </div>
+
+    <div class="landing-hero__scroll">
+      <span>Scroll</span>
+      <div class="landing-hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══ Features Section ═══ -->
+  <section class="landing-features" id="features">
+    <div class="landing-features__inner">
+      <div class="landing-features__header landing-animate">
+        <p class="landing-section-label">¿Por qué Willo?</p>
+        <h2 class="landing-section-title">Todo lo que necesitas para aprender</h2>
+        <p class="landing-section-subtitle">Nuestra plataforma combina la mejor tecnología con contenido de calidad para ofrecerte una experiencia de aprendizaje única.</p>
+      </div>
+
+      <div class="landing-features__grid landing-animate-stagger">
+        <div class="landing-feature-card">
+          <div class="landing-feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <h3 class="landing-feature-card__title">Video HD</h3>
+          <p class="landing-feature-card__desc">Lecciones grabadas en alta definición con subtítulos, reproductor inteligente y velocidad ajustable.</p>
+        </div>
+
+        <div class="landing-feature-card">
+          <div class="landing-feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3 class="landing-feature-card__title">Exámenes interactivos</h3>
+          <p class="landing-feature-card__desc">Pon a prueba tus conocimientos con cuestionarios automáticos y retroalimentación instantánea.</p>
+        </div>
+
+        <div class="landing-feature-card">
+          <div class="landing-feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="landing-feature-card__title">Comunidad activa</h3>
+          <p class="landing-feature-card__desc">Foro Q&amp;A integrado para resolver dudas con profesores y compañeros de estudio.</p>
+        </div>
+
+        <div class="landing-feature-card">
+          <div class="landing-feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="landing-feature-card__title">Certificados</h3>
+          <p class="landing-feature-card__desc">Obtén certificados verificables al completar cada curso para demostrar tu dominio.</p>
+        </div>
+
+        <div class="landing-feature-card">
+          <div class="landing-feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
+          </div>
+          <h3 class="landing-feature-card__title">Aprende a tu ritmo</h3>
+          <p class="landing-feature-card__desc">Sin horarios fijos. Accede a todo el contenido cuando quieras, desde cualquier dispositivo.</p>
+        </div>
+
+        <div class="landing-feature-card">
+          <div class="landing-feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="landing-feature-card__title">Seguimiento de progreso</h3>
+          <p class="landing-feature-card__desc">Dashboard personal para visualizar tu avance, metas cumplidas y estadísticas de estudio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Categories Section ═══ -->
+  <section class="landing-categories" id="categories">
+    <div class="landing-categories__inner">
+      <div class="landing-categories__header landing-animate">
+        <p class="landing-section-label">Explora por categoría</p>
+        <h2 class="landing-section-title">Encuentra tu próximo curso</h2>
+      </div>
+
+      <div class="landing-categories__grid landing-animate-stagger">
+        <a href="#" class="landing-category-card">
+          <div class="landing-category-card__icon">💻</div>
+          <span class="landing-category-card__name">Desarrollo Web</span>
+          <span class="landing-category-card__count">24 cursos</span>
+        </a>
+        <a href="#" class="landing-category-card">
+          <div class="landing-category-card__icon">📊</div>
+          <span class="landing-category-card__name">Ciencia de Datos</span>
+          <span class="landing-category-card__count">18 cursos</span>
+        </a>
+        <a href="#" class="landing-category-card">
+          <div class="landing-category-card__icon">🎨</div>
+          <span class="landing-category-card__name">Diseño UX/UI</span>
+          <span class="landing-category-card__count">15 cursos</span>
+        </a>
+        <a href="#" class="landing-category-card">
+          <div class="landing-category-card__icon">⚙️</div>
+          <span class="landing-category-card__name">DevOps</span>
+          <span class="landing-category-card__count">12 cursos</span>
+        </a>
+        <a href="#" class="landing-category-card">
+          <div class="landing-category-card__icon">📱</div>
+          <span class="landing-category-card__name">Apps Móviles</span>
+          <span class="landing-category-card__count">10 cursos</span>
+        </a>
+        <a href="#" class="landing-category-card">
+          <div class="landing-category-card__icon">🔐</div>
+          <span class="landing-category-card__name">Ciberseguridad</span>
+          <span class="landing-category-card__count">6 cursos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Stats Section ═══ -->
+  <section class="landing-stats" id="stats">
+    <div class="landing-stats__inner">
+      <div class="landing-stats__header landing-animate">
+        <p class="landing-section-label">Nuestros números</p>
+        <h2 class="landing-section-title">La comunidad que sigue creciendo</h2>
+      </div>
+
+      <div class="landing-stats__grid landing-animate-stagger">
+        <div class="landing-stat-card">
+          <div class="landing-stat-card__icon">👥</div>
+          <span class="landing-stat-card__value" data-count="1500" data-suffix="+">0</span>
+          <span class="landing-stat-card__label">Usuarios Activos</span>
+        </div>
+        <div class="landing-stat-card">
+          <div class="landing-stat-card__icon">📈</div>
+          <span class="landing-stat-card__value" data-count="95" data-suffix="%">0</span>
+          <span class="landing-stat-card__label">Tasa de Retención</span>
+        </div>
+        <div class="landing-stat-card">
+          <div class="landing-stat-card__icon">📚</div>
+          <span class="landing-stat-card__value" data-count="85">0</span>
+          <span class="landing-stat-card__label">Cursos Disponibles</span>
+        </div>
+        <div class="landing-stat-card">
+          <div class="landing-stat-card__icon">🎓</div>
+          <span class="landing-stat-card__value" data-count="3400" data-suffix="+">0</span>
+          <span class="landing-stat-card__label">Certificados Emitidos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA Banner ═══ -->
+  <section class="landing-cta" id="cta">
+    <div class="landing-cta__inner landing-animate">
+      <div class="landing-cta__blob landing-cta__blob--1"></div>
+      <div class="landing-cta__blob landing-cta__blob--2"></div>
+      <h2 class="landing-cta__title">¿Listo para empezar a aprender?</h2>
+      <p class="landing-cta__desc">Crea tu cuenta gratis y elige el plan de suscripción que mejor se adapte a tus metas. Accede a cursos premium de la mano de expertos.</p>
+      <div class="landing-cta__actions">
+        <a th:href="@{/auth/register}" class="landing-btn landing-btn--primary landing-btn--white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Registrarse gratis
+        </a>
+        <a th:href="@{/plans}" class="landing-btn landing-btn--ghost">
+          Ver planes y precios
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="landing-footer" id="footer">
+    <div class="landing-footer__inner">
+      <div class="landing-footer__top">
+        <!-- Brand column -->
+        <div class="landing-footer__brand">
+          <div class="landing-footer__brand-name">
+            <img th:src="@{/willo.ico}" alt="Willo" class="landing-footer__brand-logo" />
+            Willo Academy
+          </div>
+          <p class="landing-footer__brand-desc">
+            Plataforma e-learning premium diseñada para impulsar tu carrera en tecnología.
+          </p>
+          <div th:replace="~{fragments/social-links :: social-icons}"></div>
+        </div>
+
+        <!-- Plataforma -->
+        <div class="landing-footer__col">
+          <h4 class="landing-footer__col-title">Plataforma</h4>
+          <ul>
+            <li><a th:href="@{/catalog}">Catálogo</a></li>
+            <li><a href="#">Categorías</a></li>
+            <li><a href="#">Profesores</a></li>
+            <li><a href="#">Precios</a></li>
+          </ul>
+        </div>
+
+        <!-- Recursos -->
+        <div class="landing-footer__col">
+          <h4 class="landing-footer__col-title">Recursos</h4>
+          <ul>
+            <li><a href="#">Centro de ayuda</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Comunidad</a></li>
+            <li><a href="#">API</a></li>
+          </ul>
+        </div>
+
+        <!-- Empresa -->
+        <div class="landing-footer__col">
+          <h4 class="landing-footer__col-title">Empresa</h4>
+          <ul>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Carreras</a></li>
+            <li><a href="#">Prensa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="landing-footer__bottom">
+        <span>&copy; 2026 Willo Academy. Todos los derechos reservados.</span>
+        <div class="landing-footer__bottom-links">
+          <a href="#">Términos</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Scripts ═══ -->
+  <script>
+    /* ── Theme Toggle ── */
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const stored = localStorage.getItem('willo-theme');
+
+      if (stored) {
+        html.setAttribute('data-theme', stored);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
+      }
+
+      toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('willo-theme', next);
+      });
+    })();
+
+    /* ── Mobile Menu ── */
+    (function() {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('is-active');
+        menu.classList.toggle('is-open');
+      });
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          btn.classList.remove('is-active');
+          menu.classList.remove('is-open');
+        });
+      });
+    })();
+
+    /* ── Navbar scroll effect ── */
+    (function() {
+      const nav = document.getElementById('landing-nav');
+
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 60) {
+          nav.classList.add('is-scrolled');
+        } else {
+          nav.classList.remove('is-scrolled');
+        }
+      }, { passive: true });
+    })();
+
+    /* ── Typewriter Effect ── */
+    (function() {
+      const target = document.getElementById('typewriter-target');
+      const phrases = [
+        'Domina el Desarrollo Web.',
+        'Conquista la Ciencia de Datos.',
+        'Diseña Experiencias UX/UI.',
+        'Automatiza con DevOps.',
+        'Crea Apps Mobile.'
+      ];
+      let phraseIdx = 0;
+      let charIdx = 0;
+      let isDeleting = false;
+      let speed = 80;
+
+      function type() {
+        const currentPhrase = phrases[phraseIdx];
+        if (!isDeleting) {
+          target.textContent = currentPhrase.substring(0, charIdx + 1);
+          charIdx++;
+          if (charIdx === currentPhrase.length) {
+            isDeleting = true;
+            speed = 2000;
+          } else {
+            speed = 70 + Math.random() * 40;
+          }
+        } else {
+          target.textContent = currentPhrase.substring(0, charIdx - 1);
+          charIdx--;
+          if (charIdx === 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % phrases.length;
+            speed = 400;
+          } else {
+            speed = 35;
+          }
+        }
+        setTimeout(type, speed);
+      }
+
+      type();
+    })();
+
+    /* ── Floating Particles ── */
+    (function() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('span');
+        particle.className = 'landing-hero__particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = particle.style.height = (Math.random() * 4 + 1) + 'px';
+        particle.style.animationDelay = (Math.random() * 6) + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        container.appendChild(particle);
+      }
+    })();
+
+    /* ── Counter Animation ── */
+    (function() {
+      const counters = document.querySelectorAll('[data-count]');
+      const duration = 2000;
+
+      function animateCounter(el) {
+        const end = parseInt(el.getAttribute('data-count'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        const startTime = performance.now();
+
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(end * eased);
+          el.textContent = current.toLocaleString('es-CO') + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+        requestAnimationFrame(update);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      counters.forEach(c => observer.observe(c));
+    })();
+
+    /* ── Scroll Animations ── */
+    (function() {
+      const animEls = document.querySelectorAll('.landing-animate, .landing-animate-stagger');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      animEls.forEach(el => observer.observe(el));
+    })();
+
+    /* ── Brand text toggle ── */
+    (function() {
+      const logo = document.getElementById('brand-logo-toggle');
+      const text = document.getElementById('brand-text');
+      if (!logo || !text) return;
+
+      logo.addEventListener('click', (e) => {
+        e.preventDefault();
+        text.classList.toggle('is-visible');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#nav-brand')) {
+          text.classList.remove('is-visible');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

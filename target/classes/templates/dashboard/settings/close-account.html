@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Cerrar Cuenta — Configuración Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+  <link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('preferences')}"></div>
+
+    <main class="dash-main">
+      <div class="settings-layout">
+        <!-- Inner Sidebar -->
+        <div th:replace="~{fragments/settings-sidebar :: sidebar('close-account')}"></div>
+
+        <!-- Content -->
+        <div class="settings-content">
+          <h2 class="text-3xl font-extrabold mb-2 text-landing-text">Cerrar cuenta</h2>
+          <p class="subtitle mb-8 text-landing-text-secondary">Elimina permanentemente tu cuenta de Willo Academy.</p>
+
+          <div class="border border-[#EF4444] p-6 sm:p-8 rounded-xl bg-[#EF4444]/5 mb-6">
+            <h3 class="text-[#EF4444] text-xl font-bold mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation"></i> Zona de Peligro
+            </h3>
+            <div class="mb-8 text-landing-text leading-relaxed">
+              <p class="mb-4">Al cerrar tu cuenta perderás acceso para siempre a:</p>
+              <ul class="list-disc pl-5 space-y-2">
+                <li>Todos tus cursos y progresos guardados.</li>
+                <li>Tus certificados y logros obtenidos.</li>
+                <li>Cualquier suscripción activa será cancelada inmediatamente sin reembolso.</li>
+              </ul>
+            </div>
+            <button type="button" class="landing-btn w-full sm:w-auto text-center" style="background: #EF4444; border: 1px solid #EF4444; color: #fff;">Eliminar mi cuenta</button>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

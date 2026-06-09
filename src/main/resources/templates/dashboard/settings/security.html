@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Seguridad — Configuración Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+  <link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('preferences')}"></div>
+
+    <main class="dash-main">
+      <div class="settings-layout">
+        <!-- Inner Sidebar -->
+        <div th:replace="~{fragments/settings-sidebar :: sidebar('security')}"></div>
+
+        <!-- Content -->
+        <div class="settings-content">
+          <h2 class="text-3xl font-extrabold mb-2 text-landing-text">Seguridad de la cuenta</h2>
+          <p class="subtitle mb-8 text-landing-text-secondary">Gestiona la seguridad y métodos de acceso de tu cuenta.</p>
+
+          <div class="border border-landing-border p-6 rounded-xl bg-landing-surface mb-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <h3 class="text-lg font-bold mb-1 text-landing-text">Contraseña</h3>
+                <p class="text-sm text-landing-text-secondary">Mejora tu seguridad con una contraseña fuerte.</p>
+              </div>
+              <button type="button" class="landing-btn landing-btn--ghost w-full sm:w-auto text-center" onclick="document.getElementById('password-modal').classList.add('is-open')">Cambiar contraseña</button>
+            </div>
+          </div>
+
+          <div class="border border-landing-border p-6 rounded-xl bg-landing-surface">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <h3 class="text-lg font-bold mb-1 text-landing-text">Autenticación en dos pasos (2FA)</h3>
+                <p class="text-sm text-landing-text-secondary">Agrega una capa adicional de seguridad al iniciar sesión.</p>
+              </div>
+              <button type="button" class="landing-btn landing-btn--primary w-full sm:w-auto text-center">Configurar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <!-- Modal Confirmación Contraseña -->
+  <div id="password-modal" class="dash-modal-overlay">
+    <div class="dash-modal w-full max-w-md mx-4">
+      <div class="text-xl font-bold mb-3 text-landing-text">Confirmar correo electrónico</div>
+      <div class="text-sm text-landing-text-secondary mb-6 leading-relaxed">Por motivos de seguridad, te enviaremos un código de confirmación a tu correo antes de poder cambiar tu contraseña.</div>
+      
+      <div class="mb-6">
+        <label class="block text-sm font-semibold mb-2 text-landing-text">Correo electrónico actual</label>
+        <input type="email" value="estudiante@willo.com" disabled class="w-full p-3 rounded-lg border border-landing-border bg-[#1f2937] text-gray-400 font-inherit cursor-not-allowed" />
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-end">
+        <button type="button" class="landing-btn landing-btn--ghost w-full sm:w-auto" onclick="document.getElementById('password-modal').classList.remove('is-open')">Cancelar</button>
+        <button type="button" class="landing-btn landing-btn--primary w-full sm:w-auto" onclick="alert('Código enviado. (Simulación)')">Enviar código</button>
+      </div>
+    </div>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

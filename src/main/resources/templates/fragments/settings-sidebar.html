@@ -1,0 +1,42 @@
+<aside th:fragment="sidebar(activeTab)" class="settings-sidebar">
+  <h3>Configuración</h3>
+  <ul>
+    <!-- Public Profile view -->
+    <li><a th:href="@{/dashboard/settings/public-profile}" class="settings-link"><i class="fa-regular fa-eye"></i> Ver perfil público</a></li>
+    
+    <!-- Editing Profile -->
+    <li th:classappend="${activeTab == 'profile' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/profile}">Perfil</a>
+    </li>
+    
+    <!-- Security -->
+    <li th:classappend="${activeTab == 'security' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/security}">Seguridad de la cuenta</a>
+    </li>
+    
+    <!-- Subscriptions -->
+    <li th:classappend="${activeTab == 'subscriptions' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/subscriptions}">Suscripciones</a>
+    </li>
+    
+    <!-- Payment Methods -->
+    <li th:classappend="${activeTab == 'payment' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/payment}">Métodos de pago</a>
+    </li>
+    
+    <!-- Privacy -->
+    <li th:classappend="${activeTab == 'privacy' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/privacy}">Privacidad</a>
+    </li>
+    
+    <!-- Notifications -->
+    <li th:classappend="${activeTab == 'notifications' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/notifications}">Preferencias de notificaciones</a>
+    </li>
+    
+    <!-- Close Account -->
+    <li th:classappend="${activeTab == 'close-account' ? 'is-active' : ''}">
+      <a th:href="@{/dashboard/settings/close-account}" style="color: #EF4444;">Cerrar cuenta</a>
+    </li>
+  </ul>
+</aside>

@@ -1,0 +1,85 @@
+<div th:fragment="scripts">
+  <!-- Modales Globales del Dashboard -->
+  
+  <!-- Modal Cerrar Sesión -->
+  <div id="logout-modal" class="dash-modal-overlay">
+    <div class="dash-modal">
+      <div class="dash-modal-title">¿Cerrar sesión?</div>
+      <div class="dash-modal-desc">¿Estás seguro de que deseas salir de tu cuenta? Tendrás que volver a iniciar sesión para acceder a tus cursos.</div>
+      <div class="dash-modal-actions">
+        <button type="button" class="landing-btn landing-btn--ghost" onclick="closeLogoutModal()">Cancelar</button>
+        <button type="button" class="landing-btn landing-btn--primary" onclick="confirmLogout()" style="background: #EF4444; border-color: #EF4444;">Sí, cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      /* Theme Toggle */
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        const html = document.documentElement;
+        const stored = localStorage.getItem('willo-theme');
+
+        if (stored) {
+          html.setAttribute('data-theme', stored);
+        }
+
+        toggle.addEventListener('click', () => {
+          const current = html.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', next);
+          localStorage.setItem('willo-theme', next);
+        });
+      }
+
+      /* Sidebar Mobile & Desktop Toggle */
+      const logoBrand = document.querySelector('.dash-nav__brand');
+      const sidebar = document.querySelector('.dash-sidebar');
+      const main = document.querySelector('.dash-main');
+      if (logoBrand && sidebar) {
+        logoBrand.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent navigating to home to act as a toggle
+          if (window.innerWidth <= 992) {
+            sidebar.classList.toggle('is-open');
+          } else {
+            sidebar.classList.toggle('is-collapsed');
+            if (main) main.classList.toggle('is-expanded');
+          }
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth <= 992 && sidebar.classList.contains('is-open')) {
+            if (!sidebar.contains(e.target) && !logoBrand.contains(e.target)) {
+              sidebar.classList.remove('is-open');
+            }
+          }
+        });
+      }
+
+      /* Intercept Logout Forms */
+      const logoutForms = document.querySelectorAll('form[action="/logout"]');
+      let currentLogoutForm = null;
+
+      logoutForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          currentLogoutForm = form;
+          document.getElementById('logout-modal').classList.add('is-open');
+        });
+      });
+
+      window.closeLogoutModal = function() {
+        document.getElementById('logout-modal').classList.remove('is-open');
+        currentLogoutForm = null;
+      };
+
+      window.confirmLogout = function() {
+        // Como el backend aún no está listo, solo redirigimos al inicio
+        // para simular que cerró sesión y no dejar atrapado al usuario.
+        window.location.href = '/';
+      };
+    })();
+  </script>
+</div>

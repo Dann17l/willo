@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Dashboard Estudiante — Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+<link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('home')}"></div>
+
+    <main class="dash-main">
+      
+      <!-- Welcome Banner -->
+      <div class="dash-banner">
+        <div class="dash-banner__content">
+          <h1>Sigue aprendiendo, Estudiante</h1>
+          <p>Estás a punto de completar el curso de React. ¡Sigue así!</p>
+          <a href="#" class="landing-btn landing-btn--primary">Continuar curso</a>
+        </div>
+      </div>
+
+      <!-- In Progress Courses -->
+      <section class="dash-section">
+        <h2 class="dash-section__title">Cursos en progreso</h2>
+        <div class="dash-grid">
+          <div class="course-card">
+            <div class="course-card__img" style="background: linear-gradient(135deg, #14B8A6, #0D9488);">
+              <i class="fa-brands fa-react fa-3x" style="color:rgba(255,255,255,0.8);"></i>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__category">Desarrollo Web</span>
+              <h3 class="course-card__title">React Moderno: De cero a experto</h3>
+              <div class="course-card__progress">
+                <div class="course-card__progress-bar">
+                  <div class="course-card__progress-fill" style="width: 75%;"></div>
+                </div>
+                <span class="course-card__progress-text">75% Completado</span>
+              </div>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-card__img" style="background: linear-gradient(135deg, #F59E0B, #D97706);">
+              <i class="fa-brands fa-aws fa-3x" style="color:rgba(255,255,255,0.8);"></i>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__category">DevOps</span>
+              <h3 class="course-card__title">Fundamentos de AWS Cloud</h3>
+              <div class="course-card__progress">
+                <div class="course-card__progress-bar">
+                  <div class="course-card__progress-fill" style="width: 30%;"></div>
+                </div>
+                <span class="course-card__progress-text">30% Completado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Search / Explore -->
+      <section class="dash-section">
+        <h2 class="dash-section__title">Explora por categorías</h2>
+        <div class="dash-categories">
+          <a href="#" class="dash-cat-pill"><i class="fa-solid fa-code"></i> Frontend</a>
+          <a href="#" class="dash-cat-pill"><i class="fa-solid fa-server"></i> Backend</a>
+          <a href="#" class="dash-cat-pill"><i class="fa-solid fa-database"></i> Data Science</a>
+          <a href="#" class="dash-cat-pill"><i class="fa-solid fa-mobile-screen"></i> Mobile</a>
+          <a href="#" class="dash-cat-pill"><i class="fa-solid fa-shield-halved"></i> Seguridad</a>
+          <a href="#" class="dash-cat-pill"><i class="fa-solid fa-palette"></i> Diseño UX/UI</a>
+        </div>
+      </section>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

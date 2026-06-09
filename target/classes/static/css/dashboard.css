@@ -1,0 +1,635 @@
+/* ========================================
+   Willo Academy — Dashboard CSS
+   ======================================== */
+
+/* ── Layout Variables ── */
+:root {
+  --sidebar-width: 260px;
+  --dash-nav-height: 72px;
+}
+
+body.dash-body {
+  background-color: var(--landing-bg);
+  color: var(--landing-text);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ── Dashboard Navbar ── */
+.dash-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--dash-nav-height);
+  background: var(--landing-nav-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--landing-nav-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 1000;
+}
+
+.dash-nav__left {
+  display: flex;
+  align-items: center;
+  width: var(--sidebar-width);
+}
+
+.dash-nav__brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 12px;
+}
+
+.dash-nav__logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--landing-accent);
+}
+
+.dash-nav__title {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--landing-text);
+  letter-spacing: -0.02em;
+}
+
+/* Search Bar */
+.dash-nav__search {
+  flex-grow: 1;
+  max-width: 480px;
+  position: relative;
+  margin: 0 24px;
+}
+
+.dash-nav__search i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--landing-text-muted);
+}
+
+.dash-nav__search input {
+  width: 100%;
+  background: var(--landing-surface);
+  border: 1px solid var(--landing-border);
+  border-radius: 99px;
+  padding: 10px 16px 10px 44px;
+  font-size: 0.95rem;
+  color: var(--landing-text);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.dash-nav__search input:focus {
+  outline: none;
+  border-color: var(--landing-accent);
+  box-shadow: 0 0 0 3px var(--landing-accent-soft);
+}
+
+.dash-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Icon Buttons (Notifications, etc) */
+.dash-nav__icon-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--landing-text-secondary);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dash-nav__icon-btn:hover {
+  background: var(--landing-surface-hover);
+  color: var(--landing-text);
+}
+
+.dash-nav__icon-btn i {
+  font-size: 1.2rem;
+}
+
+.dash-nav__badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #EF4444;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Profile Panel */
+.dash-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 6px 12px 6px 6px;
+  border-radius: 99px;
+  transition: background 0.3s;
+}
+
+.dash-profile:hover {
+  background: var(--landing-surface-hover);
+}
+
+.dash-profile__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dash-profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-profile__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--landing-text);
+}
+
+.dash-profile__role {
+  font-size: 0.75rem;
+  color: var(--landing-accent);
+  font-weight: 500;
+}
+
+/* ── Container & Sidebar ── */
+.dash-container {
+  display: flex;
+  padding-top: var(--dash-nav-height);
+  min-height: 100vh;
+}
+
+.dash-sidebar {
+  width: var(--sidebar-width);
+  background: var(--landing-bg-alt);
+  border-right: 1px solid var(--landing-border);
+  position: fixed;
+  top: var(--dash-nav-height);
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  z-index: 900;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dash-sidebar.is-collapsed {
+  transform: translateX(-100%);
+}
+
+.dash-sidebar__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dash-sidebar__item a,
+.dash-sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--landing-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dash-sidebar__item a i,
+.dash-sidebar__logout i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.dash-sidebar__item a:hover,
+.dash-sidebar__logout:hover {
+  background: var(--landing-surface-hover);
+  color: var(--landing-text);
+}
+
+.dash-sidebar__item.is-active a {
+  background: var(--landing-accent-soft);
+  color: var(--landing-accent);
+  font-weight: 600;
+}
+
+.dash-sidebar__bottom {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--landing-border);
+}
+
+/* ── Main Content ── */
+.dash-main {
+  flex-grow: 1;
+  margin-left: var(--sidebar-width);
+  padding: 32px 40px;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dash-main.is-expanded {
+  margin-left: 0;
+}
+
+/* Banner */
+.dash-banner {
+  background: linear-gradient(135deg, var(--landing-gradient-start), var(--landing-gradient-end));
+  border-radius: 24px;
+  padding: 40px;
+  color: #fff;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
+}
+
+.dash-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+}
+
+.dash-banner__content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
+
+.dash-banner__content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.dash-banner__content p {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* Sections */
+.dash-section {
+  margin-bottom: 48px;
+}
+
+.dash-section__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--landing-text);
+  margin-bottom: 24px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Course Card */
+.course-card {
+  background: var(--landing-surface);
+  border: 1px solid var(--landing-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--landing-card-shadow-hover);
+}
+
+.course-card__img {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-card__body {
+  padding: 20px;
+}
+
+.course-card__category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--landing-accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.course-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--landing-text);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.course-card__progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course-card__progress-bar {
+  height: 6px;
+  background: var(--landing-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.course-card__progress-fill {
+  height: 100%;
+  background: var(--landing-accent);
+  border-radius: 4px;
+}
+
+.course-card__progress-text {
+  font-size: 0.8rem;
+  color: var(--landing-text-secondary);
+  font-weight: 500;
+  align-self: flex-end;
+}
+
+/* Category Pills */
+.dash-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dash-cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--landing-surface);
+  border: 1px solid var(--landing-border);
+  border-radius: 99px;
+  color: var(--landing-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.dash-cat-pill i {
+  color: var(--landing-accent);
+}
+
+.dash-cat-pill:hover {
+  background: var(--landing-accent-soft);
+  border-color: var(--landing-accent);
+  color: var(--landing-accent);
+}
+
+/* Dropdowns for Navbar */
+.dash-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 320px;
+  background: var(--landing-surface);
+  border: 1px solid var(--landing-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  cursor: default;
+  text-align: left;
+}
+
+/* Ensure the parent triggers the hover correctly */
+.dash-nav__icon-btn:hover .dash-dropdown,
+.dash-profile:hover .dash-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dash-dropdown__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 12px;
+  border-bottom: 1px solid var(--landing-border);
+  margin-bottom: 8px;
+}
+
+.dash-dropdown__title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--landing-text);
+}
+
+.dash-dropdown__link {
+  font-size: 0.85rem;
+  color: var(--landing-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.dash-dropdown__link:hover {
+  text-decoration: underline;
+  color: var(--landing-accent-hover);
+}
+
+.dash-dropdown__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+/* Customize scrollbar for dropdowns */
+.dash-dropdown__list::-webkit-scrollbar {
+  width: 6px;
+}
+.dash-dropdown__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dash-dropdown__list::-webkit-scrollbar-thumb {
+  background: var(--landing-border);
+  border-radius: 10px;
+}
+
+.dash-dropdown__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--landing-text);
+  transition: background 0.2s;
+}
+
+.dash-dropdown__item:hover {
+  background: var(--landing-surface-hover);
+}
+
+.dash-dropdown__item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--landing-accent-soft);
+  color: var(--landing-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.dash-dropdown__item-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-dropdown__item-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--landing-text);
+}
+
+.dash-dropdown__item-desc {
+  font-size: 0.8rem;
+  color: var(--landing-text-secondary);
+  line-height: 1.4;
+}
+
+.dash-dropdown__divider {
+  height: 1px;
+  background: var(--landing-border);
+  margin: 8px 0;
+}
+
+/* Specific for Profile Dropdown */
+.dash-dropdown--profile {
+  width: 260px;
+  top: calc(100% + 5px);
+}
+
+.dash-dropdown--profile .dash-dropdown__item i {
+  color: var(--landing-text-secondary);
+  font-size: 1.1rem;
+  margin-top: 2px;
+}
+
+/* Theme Toggle Icons */
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun { display: inline-block; color: #fff; }
+[data-theme="light"] .icon-moon { display: inline-block; color: #000; }
+[data-theme="light"] .icon-sun { display: none; }
+:root:not([data-theme="dark"]):not([data-theme="light"]) .icon-moon { display: inline-block; color: #000; }
+:root:not([data-theme="dark"]):not([data-theme="light"]) .icon-sun { display: none; }
+
+/* ── Settings Layout (Udemy style) ── */
+.settings-layout { display: flex; gap: 40px; margin-top: 20px; }
+.settings-sidebar { width: 280px; flex-shrink: 0; }
+.settings-sidebar h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--landing-text-secondary); margin-bottom: 12px; margin-top: 24px; font-weight: 700; letter-spacing: 0.05em; padding-left: 16px; }
+.settings-sidebar ul { list-style: none; padding: 0; margin: 0; }
+.settings-sidebar li a {
+  display: block; padding: 12px 16px; color: var(--landing-text); font-weight: 500; text-decoration: none; border-radius: 8px; margin-bottom: 4px; transition: background 0.2s;
+}
+.settings-sidebar li a:hover { background: var(--landing-surface-hover); }
+.settings-sidebar li.is-active a { background: var(--landing-text); color: var(--landing-bg); font-weight: 600; }
+.settings-content { flex-grow: 1; max-width: 700px; }
+.settings-content h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+.settings-content p.subtitle { color: var(--landing-text-secondary); margin-bottom: 32px; }
+
+/* ── Modals ── */
+.dash-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+  z-index: 2000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: 0.3s;
+}
+.dash-modal-overlay.is-open { opacity: 1; visibility: visible; }
+.dash-modal {
+  background: var(--landing-surface); border-radius: 16px; width: 400px; max-width: 90%;
+  padding: 32px; border: 1px solid var(--landing-border);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transform: translateY(20px); transition: 0.3s;
+}
+.dash-modal-overlay.is-open .dash-modal { transform: translateY(0); }
+.dash-modal-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+.dash-modal-desc { color: var(--landing-text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.5; }
+.dash-modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.dash-modal-actions button { padding: 8px 16px; font-size: 0.95rem; }
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+  .dash-nav__search {
+    display: none;
+  }
+  .dash-sidebar {
+    transform: translateX(-100%);
+  }
+  .dash-sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.3);
+  }
+  .dash-main {
+    margin-left: 0;
+  }
+  .settings-layout { flex-direction: column; }
+  .settings-sidebar { width: 100%; }
+}

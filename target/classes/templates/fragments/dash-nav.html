@@ -1,0 +1,104 @@
+<nav th:fragment="navbar" class="dash-nav">
+  <div class="dash-nav__left">
+    <a th:href="@{/}" class="dash-nav__brand">
+      <img th:src="@{/willo.ico}" alt="Willo" class="dash-nav__logo" />
+      <span class="dash-nav__title hidden sm:block">Willo Academy</span>
+    </a>
+  </div>
+
+  <!-- Search bar -->
+  <div class="dash-nav__search">
+    <i class="fa-solid fa-search"></i>
+    <input type="text" placeholder="Buscar cursos, categorías..." />
+  </div>
+
+  <div class="dash-nav__right">
+    <!-- Notifications Center -->
+    <div class="dash-nav__icon-btn">
+      <i class="fa-regular fa-bell"></i>
+      <span class="dash-nav__badge">3</span>
+      
+      <!-- Notifications Dropdown -->
+      <div class="dash-dropdown !fixed sm:!absolute !top-16 sm:!top-full !right-4 sm:!right-0 !w-[calc(100vw-32px)] sm:!w-80">
+        <div class="dash-dropdown__header">
+          <span class="dash-dropdown__title">Notificaciones</span>
+          <a th:href="@{/dashboard/settings/notifications}" class="dash-dropdown__link"><i class="fa-solid fa-gear"></i> Configurar</a>
+        </div>
+        <div class="dash-dropdown__list">
+          <a href="#" class="dash-dropdown__item">
+            <div class="dash-dropdown__item-icon"><i class="fa-solid fa-certificate"></i></div>
+            <div class="dash-dropdown__item-content">
+              <span class="dash-dropdown__item-title">¡Certificado disponible!</span>
+              <span class="dash-dropdown__item-desc">Has completado React Moderno. Descarga tu certificado ahora.</span>
+            </div>
+          </a>
+          <a href="#" class="dash-dropdown__item">
+            <div class="dash-dropdown__item-icon" style="background:var(--landing-surface-hover);"><i class="fa-solid fa-star" style="color:#F59E0B;"></i></div>
+            <div class="dash-dropdown__item-content">
+              <span class="dash-dropdown__item-title">Nuevo curso publicado</span>
+              <span class="dash-dropdown__item-desc">Descubre el nuevo curso de Next.js.</span>
+            </div>
+          </a>
+          <a href="#" class="dash-dropdown__item">
+            <div class="dash-dropdown__item-icon" style="background:var(--landing-surface-hover);"><i class="fa-solid fa-bell-concierge" style="color:#10B981;"></i></div>
+            <div class="dash-dropdown__item-content">
+              <span class="dash-dropdown__item-title">Recordatorio</span>
+              <span class="dash-dropdown__item-desc">Tienes clases pendientes en AWS Cloud.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+      <i class="fa-solid fa-moon icon-moon"></i>
+      <i class="fa-solid fa-sun icon-sun"></i>
+    </button>
+
+    <!-- Profile Panel -->
+    <div class="dash-profile">
+      <img src="https://ui-avatars.com/api/?name=Estudiante+Willo&background=8B5CF6&color=fff" alt="Perfil" class="dash-profile__avatar flex-shrink-0" />
+      <div class="dash-profile__info hidden sm:flex">
+        <span class="dash-profile__name">Hola, Estudiante</span>
+        <span class="dash-profile__role">Plan Anual</span>
+      </div>
+      
+      <!-- Profile Dropdown -->
+      <div class="dash-dropdown dash-dropdown--profile !fixed sm:!absolute !top-16 sm:!top-[calc(100%+5px)] !right-4 sm:!right-0 !w-[calc(100vw-32px)] sm:!w-[260px]">
+        <div class="dash-dropdown__list">
+          <a th:href="@{/dashboard/settings/profile}" class="dash-dropdown__item">
+            <i class="fa-regular fa-user"></i>
+            <div class="dash-dropdown__item-content">
+              <span class="dash-dropdown__item-title">Mi Perfil</span>
+              <span class="dash-dropdown__item-desc">Cambiar datos personales</span>
+            </div>
+          </a>
+          <a th:href="@{/dashboard/certificates}" class="dash-dropdown__item">
+            <i class="fa-solid fa-certificate"></i>
+            <div class="dash-dropdown__item-content">
+              <span class="dash-dropdown__item-title">Mis Certificados</span>
+              <span class="dash-dropdown__item-desc">Ver logros obtenidos</span>
+            </div>
+          </a>
+          <a th:href="@{/dashboard/settings/profile}" class="dash-dropdown__item">
+            <i class="fa-solid fa-sliders"></i>
+            <div class="dash-dropdown__item-content">
+              <span class="dash-dropdown__item-title">Configuración</span>
+              <span class="dash-dropdown__item-desc">Ajustes de cuenta</span>
+            </div>
+          </a>
+          <div class="dash-dropdown__divider"></div>
+          <form th:action="@{/logout}" method="post" style="margin:0;">
+            <button type="submit" class="dash-dropdown__item" style="width:100%; text-align:left; border:none; background:none; cursor:pointer; font-family:inherit;">
+              <i class="fa-solid fa-arrow-right-from-bracket" style="color:#EF4444;"></i>
+              <div class="dash-dropdown__item-content">
+                <span class="dash-dropdown__item-title" style="color:#EF4444;">Cerrar sesión</span>
+              </div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

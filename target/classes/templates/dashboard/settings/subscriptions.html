@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Suscripciones — Configuración Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+  <link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('preferences')}"></div>
+
+    <main class="dash-main">
+      <div class="settings-layout">
+        <!-- Inner Sidebar -->
+        <div th:replace="~{fragments/settings-sidebar :: sidebar('subscriptions')}"></div>
+
+        <!-- Content -->
+        <div class="settings-content">
+          <h2 class="text-3xl font-extrabold mb-2 text-landing-text">Suscripciones</h2>
+          <p class="subtitle mb-8 text-landing-text-secondary">Gestiona tus planes activos en Willo Academy.</p>
+
+          <div class="border border-landing-accent p-6 sm:p-8 rounded-2xl bg-landing-accent/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+            <div>
+              <span class="bg-landing-accent text-white text-xs font-bold uppercase px-2 py-1 rounded mb-3 inline-block">Activo</span>
+              <h3 class="text-2xl font-bold mb-2 text-landing-text">Plan Anual Willo Pro</h3>
+              <p class="text-landing-text-secondary text-sm sm:text-base leading-relaxed">Tu plan se renovará automáticamente el <strong>15 de Noviembre de 2026</strong> por $190.</p>
+            </div>
+            <div class="flex flex-col gap-3 w-full sm:w-auto">
+              <button type="button" class="landing-btn landing-btn--primary w-full sm:w-auto text-center">Cambiar de plan</button>
+              <button type="button" class="landing-btn landing-btn--ghost w-full sm:w-auto text-center">Cancelar suscripción</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>

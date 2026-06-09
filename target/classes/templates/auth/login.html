@@ -1,18 +1,115 @@
-<div class="login-view">
-  <form th:action="@{/auth/login}" method="post" class="auth-form">
-    <h2>Iniciar Sesión</h2>
-    <div th:if="${param.error}" class="form-error">
-      Credenciales inválidas
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Iniciar Sesión — Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" th:href="@{/css/app.css}" />
+  <link rel="stylesheet" th:href="@{/auth/login.css}" />
+  <link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+
+<body>
+  <div class="auth-page">
+    <!-- Decorative background -->
+    <div class="auth-page__bg">
+      <div class="auth-page__blob auth-page__blob--1"></div>
+      <div class="auth-page__blob auth-page__blob--2"></div>
     </div>
-    <div class="form-group">
-      <label for="username">Email</label>
-      <input type="text" id="username" name="username" required />
+
+    <div class="auth-card">
+      <!-- Header -->
+      <div class="auth-card__header">
+        <a th:href="@{/}" class="auth-card__logo">
+          <img th:src="@{/willo.ico}" alt="Willo" class="auth-card__logo-img" />
+        </a>
+        <h1 class="auth-card__title">Bienvenido de nuevo</h1>
+        <p class="auth-card__subtitle">Ingresa tus credenciales para continuar</p>
+      </div>
+
+      <!-- Login Form -->
+      <form th:action="@{/auth/login}" method="post" class="auth-form" autocomplete="off">
+        <div class="auth-input-group">
+          <label for="username" class="auth-label">Correo electrónico</label>
+          <div class="auth-input-wrapper">
+            <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <input type="text" id="username" name="username" placeholder="tu@email.com" required />
+          </div>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="password" class="auth-label">Contraseña</label>
+          <div class="auth-input-wrapper">
+            <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <input type="password" id="password" name="password" placeholder="••••••••" required />
+            <button type="button" class="auth-toggle-pass" id="toggle-password" aria-label="Mostrar contraseña">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="auth-options">
+          <label class="auth-checkbox">
+            <input type="checkbox" name="remember-me" />
+            <span class="auth-checkbox__mark"></span>
+            Recordarme
+          </label>
+          <a th:href="@{/auth/forgot-password}" class="auth-forgot">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="auth-submit">
+          <span>Iniciar Sesión</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>o</span></div>
+
+      <p class="auth-switch-link">
+        ¿No tienes cuenta? <a th:href="@{/auth/register}">Crea una gratis</a>
+      </p>
     </div>
-    <div class="form-group">
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Ingresar</button>
-    <p class="auth-link">¿No tienes cuenta? <a th:href="@{/auth/register}">Regístrate</a></p>
-  </form>
-</div>
+  </div>
+
+  <script>
+    (function () {
+      const togglePass = document.getElementById('toggle-password');
+      const passInput = document.getElementById('password');
+
+      if (togglePass && passInput) {
+        togglePass.addEventListener('click', () => {
+          passInput.type = passInput.type === 'password' ? 'text' : 'password';
+          togglePass.classList.toggle('is-visible');
+        });
+      }
+
+      document.querySelectorAll('.auth-input-wrapper input').forEach(input => {
+        input.addEventListener('focus', () => input.closest('.auth-input-wrapper').classList.add('is-focused'));
+        input.addEventListener('blur', () => input.closest('.auth-input-wrapper').classList.remove('is-focused'));
+      });
+    })();
+  </script>
+</body>
+
+</html>

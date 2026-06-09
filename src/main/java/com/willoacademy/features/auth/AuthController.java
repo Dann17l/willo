@@ -21,17 +21,13 @@ public class AuthController {
     @GetMapping("/login")
     public String loginForm(Model model) {
         model.addAttribute("loginRequest", new LoginRequest());
-        model.addAttribute("contentView", "auth/login");
-        model.addAttribute("title", "Iniciar Sesión");
-        return "layouts/default";
+        return "auth/login";
     }
 
     @GetMapping("/register")
     public String registerForm(Model model) {
         model.addAttribute("registerRequest", new RegisterRequest());
-        model.addAttribute("contentView", "auth/register");
-        model.addAttribute("title", "Crear Cuenta");
-        return "layouts/default";
+        return "auth/register";
     }
 
     @PostMapping("/register")
@@ -42,9 +38,12 @@ public class AuthController {
         } catch (IllegalArgumentException | IllegalStateException e) {
             model.addAttribute("error", e.getMessage());
             model.addAttribute("registerRequest", request);
-            model.addAttribute("contentView", "auth/register");
-            model.addAttribute("title", "Crear Cuenta");
-            return "layouts/default";
+            return "auth/register";
         }
+    }
+
+    @GetMapping("/forgot-password")
+    public String forgotPasswordForm() {
+        return "auth/forgot-password";
     }
 }

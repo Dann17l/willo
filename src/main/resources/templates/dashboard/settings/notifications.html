@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
+  <title>Notificaciones — Configuración Willo Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+  <link rel="stylesheet" th:href="@{/css/tailwind.css}" />
+</head>
+<body class="dash-body">
+
+  <div th:replace="~{fragments/dash-nav :: navbar}"></div>
+
+  <div class="dash-container">
+    <div th:replace="~{fragments/dash-sidebar :: sidebar('preferences')}"></div>
+
+    <main class="dash-main">
+      <div class="settings-layout">
+        <!-- Inner Sidebar -->
+        <div th:replace="~{fragments/settings-sidebar :: sidebar('notifications')}"></div>
+
+        <!-- Content -->
+        <div class="settings-content">
+          <h2 class="text-3xl font-extrabold mb-2 text-landing-text">Preferencias de Notificaciones</h2>
+          <p class="subtitle mb-8 text-landing-text-secondary">Controla qué correos y alertas deseas recibir.</p>
+
+          <div class="border border-landing-border p-6 rounded-xl bg-landing-surface mb-6">
+            <h3 class="text-xl font-bold mb-6 text-landing-text">Comunicaciones por Correo</h3>
+            
+            <label class="flex items-start gap-4 mb-6 cursor-pointer group">
+              <div class="mt-1 flex-shrink-0">
+                <input type="checkbox" class="w-5 h-5 rounded border-landing-border text-landing-accent focus:ring-landing-accent bg-landing-bg cursor-pointer" />
+              </div>
+              <div>
+                <strong class="block text-landing-text font-bold mb-1 group-hover:text-landing-accent transition-colors">Noticias y ofertas</strong>
+                <span class="text-sm text-landing-text-secondary leading-relaxed">Descubre promociones exclusivas, nuevos lanzamientos y noticias sobre la plataforma.</span>
+              </div>
+            </label>
+
+            <label class="flex items-start gap-4 mb-6 cursor-pointer group">
+              <div class="mt-1 flex-shrink-0">
+                <input type="checkbox" checked class="w-5 h-5 rounded border-landing-border text-landing-accent focus:ring-landing-accent bg-landing-bg cursor-pointer" />
+              </div>
+              <div>
+                <strong class="block text-landing-text font-bold mb-1 group-hover:text-landing-accent transition-colors">Tu aprendizaje</strong>
+                <span class="text-sm text-landing-text-secondary leading-relaxed">Correos motivacionales, recordatorios cuando llevas tiempo sin entrar y actualizaciones sobre tus cursos.</span>
+              </div>
+            </label>
+            
+            <label class="flex items-start gap-4 cursor-pointer group">
+              <div class="mt-1 flex-shrink-0">
+                <input type="checkbox" class="w-5 h-5 rounded border-landing-border text-landing-accent focus:ring-landing-accent bg-landing-bg cursor-pointer" />
+              </div>
+              <div>
+                <strong class="block text-landing-text font-bold mb-1 group-hover:text-landing-accent transition-colors">Boletín Semanal (Newsletter)</strong>
+                <span class="text-sm text-landing-text-secondary leading-relaxed">Resumen semanal de noticias destacadas de la industria.</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl text-sm text-landing-text-secondary flex gap-3 items-start leading-relaxed">
+            <i class="fa-solid fa-circle-info text-blue-500 mt-0.5 text-lg"></i>
+            <div>
+              <strong>Nota:</strong> Puede que los cambios tarden unas horas en reflejarse en tus preferencias. Si anulas tu suscripción, seguirás recibiendo correos electrónicos transaccionales relacionados con tu cuenta y tus compras.
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <button type="button" class="landing-btn landing-btn--primary px-8 py-3 w-full sm:w-auto text-base" onclick="alert('Preferencias guardadas exitosamente')">Guardar cambios</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div th:replace="~{fragments/dash-footer :: footer}"></div>
+    </main>
+  </div>
+
+  <div th:replace="~{fragments/dash-scripts :: scripts}"></div>
+</body>
+</html>
