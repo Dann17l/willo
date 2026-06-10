@@ -13,7 +13,7 @@
   <groupId>com.willoacademy</groupId>
   <artifactId>willo-academy</artifactId>
   <version>1.0.0</version>
-  <name>Willo Academy</name>
+  <name>Willo Campus</name>
   <description>Plataforma e-learning premium</description>
   <properties>
     <java.version>17</java.version>

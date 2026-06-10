@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/x-icon" th:href="@{/willo.ico}" />
-  <title>Willo Academy — Aprende sin límites</title>
+  <title>Willo Campus — Aprende sin límites</title>
   <meta name="description" content="Plataforma e-learning premium. Cursos en desarrollo web, ciencia de datos, diseño UX/UI, DevOps y más. Aprende a tu ritmo con los mejores profesores." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,10 +20,9 @@
     <div class="landing-nav__inner">
       <div class="landing-nav__brand" id="nav-brand">
         <img th:src="@{/willo.ico}" alt="Willo" class="landing-nav__brand-logo" id="brand-logo-toggle" />
-        <span class="landing-nav__brand-text" id="brand-text">Willo Academy</span>
+        <span class="landing-nav__brand-text" id="brand-text">Willo Campus</span>
       </div>
       <div class="landing-nav__links">
-        <a th:href="@{/catalog}" class="landing-nav__link">Catálogo</a>
         <a th:href="@{/auth/login}" class="landing-nav__cta">Iniciar Sesión</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
           <i class="fa-solid fa-moon icon-moon"></i>
@@ -37,7 +36,6 @@
     </div>
     <!-- Mobile menu -->
     <div class="landing-nav__mobile-menu" id="mobile-menu">
-      <a th:href="@{/catalog}" class="landing-nav__mobile-link">Catálogo</a>
       <a th:href="@{/auth/login}" class="landing-nav__mobile-link landing-nav__mobile-link--cta">Iniciar Sesión</a>
     </div>
   </nav>
@@ -75,9 +73,6 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           Crear cuenta gratis
         </a>
-        <a th:href="@{/plans}" class="landing-btn landing-btn--secondary">
-          Ver planes
-        </a>
       </div>
 
       <!-- Trust badges -->
@@ -94,10 +89,10 @@
       </div>
     </div>
 
-    <div class="landing-hero__scroll">
+    <a href="#features" class="landing-hero__scroll">
       <span>Scroll</span>
       <div class="landing-hero__scroll-line"></div>
-    </div>
+    </a>
   </section>
 
   <!-- ═══ Features Section ═══ -->
@@ -161,49 +156,6 @@
     </div>
   </section>
 
-  <!-- ═══ Categories Section ═══ -->
-  <section class="landing-categories" id="categories">
-    <div class="landing-categories__inner">
-      <div class="landing-categories__header landing-animate">
-        <p class="landing-section-label">Explora por categoría</p>
-        <h2 class="landing-section-title">Encuentra tu próximo curso</h2>
-      </div>
-
-      <div class="landing-categories__grid landing-animate-stagger">
-        <a href="#" class="landing-category-card">
-          <div class="landing-category-card__icon">💻</div>
-          <span class="landing-category-card__name">Desarrollo Web</span>
-          <span class="landing-category-card__count">24 cursos</span>
-        </a>
-        <a href="#" class="landing-category-card">
-          <div class="landing-category-card__icon">📊</div>
-          <span class="landing-category-card__name">Ciencia de Datos</span>
-          <span class="landing-category-card__count">18 cursos</span>
-        </a>
-        <a href="#" class="landing-category-card">
-          <div class="landing-category-card__icon">🎨</div>
-          <span class="landing-category-card__name">Diseño UX/UI</span>
-          <span class="landing-category-card__count">15 cursos</span>
-        </a>
-        <a href="#" class="landing-category-card">
-          <div class="landing-category-card__icon">⚙️</div>
-          <span class="landing-category-card__name">DevOps</span>
-          <span class="landing-category-card__count">12 cursos</span>
-        </a>
-        <a href="#" class="landing-category-card">
-          <div class="landing-category-card__icon">📱</div>
-          <span class="landing-category-card__name">Apps Móviles</span>
-          <span class="landing-category-card__count">10 cursos</span>
-        </a>
-        <a href="#" class="landing-category-card">
-          <div class="landing-category-card__icon">🔐</div>
-          <span class="landing-category-card__name">Ciberseguridad</span>
-          <span class="landing-category-card__count">6 cursos</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══ Stats Section ═══ -->
   <section class="landing-stats" id="stats">
     <div class="landing-stats__inner">
@@ -237,107 +189,11 @@
     </div>
   </section>
 
-  <!-- ═══ CTA Banner ═══ -->
-  <section class="landing-cta" id="cta">
-    <div class="landing-cta__inner landing-animate">
-      <div class="landing-cta__blob landing-cta__blob--1"></div>
-      <div class="landing-cta__blob landing-cta__blob--2"></div>
-      <h2 class="landing-cta__title">¿Listo para empezar a aprender?</h2>
-      <p class="landing-cta__desc">Crea tu cuenta gratis y elige el plan de suscripción que mejor se adapte a tus metas. Accede a cursos premium de la mano de expertos.</p>
-      <div class="landing-cta__actions">
-        <a th:href="@{/auth/register}" class="landing-btn landing-btn--primary landing-btn--white">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          Registrarse gratis
-        </a>
-        <a th:href="@{/plans}" class="landing-btn landing-btn--ghost">
-          Ver planes y precios
-        </a>
-      </div>
-    </div>
-  </section>
+  <div th:replace="~{fragments/landing-footer :: footer}"></div>
 
-  <!-- ═══ Footer ═══ -->
-  <footer class="landing-footer" id="footer">
-    <div class="landing-footer__inner">
-      <div class="landing-footer__top">
-        <!-- Brand column -->
-        <div class="landing-footer__brand">
-          <div class="landing-footer__brand-name">
-            <img th:src="@{/willo.ico}" alt="Willo" class="landing-footer__brand-logo" />
-            Willo Academy
-          </div>
-          <p class="landing-footer__brand-desc">
-            Plataforma e-learning premium diseñada para impulsar tu carrera en tecnología.
-          </p>
-          <div th:replace="~{fragments/social-links :: social-icons}"></div>
-        </div>
-
-        <!-- Plataforma -->
-        <div class="landing-footer__col">
-          <h4 class="landing-footer__col-title">Plataforma</h4>
-          <ul>
-            <li><a th:href="@{/catalog}">Catálogo</a></li>
-            <li><a href="#">Categorías</a></li>
-            <li><a href="#">Profesores</a></li>
-            <li><a href="#">Precios</a></li>
-          </ul>
-        </div>
-
-        <!-- Recursos -->
-        <div class="landing-footer__col">
-          <h4 class="landing-footer__col-title">Recursos</h4>
-          <ul>
-            <li><a href="#">Centro de ayuda</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Comunidad</a></li>
-            <li><a href="#">API</a></li>
-          </ul>
-        </div>
-
-        <!-- Empresa -->
-        <div class="landing-footer__col">
-          <h4 class="landing-footer__col-title">Empresa</h4>
-          <ul>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">Carreras</a></li>
-            <li><a href="#">Prensa</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="landing-footer__bottom">
-        <span>&copy; 2026 Willo Academy. Todos los derechos reservados.</span>
-        <div class="landing-footer__bottom-links">
-          <a href="#">Términos</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Cookies</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
+  <div th:replace="~{fragments/theme-script :: theme-toggle}"></div>
   <!-- ═══ Scripts ═══ -->
   <script>
-    /* ── Theme Toggle ── */
-    (function() {
-      const toggle = document.getElementById('theme-toggle');
-      const html = document.documentElement;
-      const stored = localStorage.getItem('willo-theme');
-
-      if (stored) {
-        html.setAttribute('data-theme', stored);
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        html.setAttribute('data-theme', 'dark');
-      }
-
-      toggle.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('willo-theme', next);
-      });
-    })();
 
     /* ── Mobile Menu ── */
     (function() {

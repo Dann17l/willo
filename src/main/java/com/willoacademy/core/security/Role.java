@@ -2,7 +2,8 @@ package com.willoacademy.core.security;
 
 public enum Role {
     STUDENT("ROLE_STUDENT"),
-    ADMIN("ROLE_ADMIN");
+    ADMIN("ROLE_ADMIN"),
+    TEACHER("ROLE_TEACHER");
 
     private final String authority;
 

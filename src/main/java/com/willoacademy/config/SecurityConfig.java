@@ -16,13 +16,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/auth/**", "/css/**", "/catalog/**", "/plans", "/dashboard/**", "/*.ico")
+                        .requestMatchers("/", "/auth/**", "/api/**", "/css/**", "/willo.ico", "/willo.png", "/favicon.ico", "/error")
                         .permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .formLogin(login -> login
                         .loginPage("/auth/login")
-                        .defaultSuccessUrl("/catalog")
+                        .defaultSuccessUrl("/dashboard", true)
                         .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")

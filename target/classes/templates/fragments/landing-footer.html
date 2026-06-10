@@ -1,0 +1,42 @@
+<footer class="landing-footer" id="footer" th:fragment="footer">
+  <div class="landing-footer__inner">
+    <div class="landing-footer__top">
+      <div class="landing-footer__brand">
+        <div class="landing-footer__brand-name">
+          <img th:src="@{/willo.ico}" alt="Willo" class="landing-footer__brand-logo" />
+          Willo Campus
+        </div>
+        <p class="landing-footer__brand-desc">
+          Plataforma e-learning premium diseñada para impulsar tu carrera en tecnología.
+        </p>
+        <div th:replace="~{fragments/social-links :: social-icons}"></div>
+      </div>
+      <div class="landing-footer__col">
+        <h4 class="landing-footer__col-title">Recursos</h4>
+        <ul>
+          <li><a href="#">Centro de ayuda</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Comunidad</a></li>
+          <li><a href="#">API</a></li>
+        </ul>
+      </div>
+      <div class="landing-footer__col">
+        <h4 class="landing-footer__col-title">Empresa</h4>
+        <ul>
+          <li><a href="#">Acerca de</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Carreras</a></li>
+          <li><a href="#">Prensa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="landing-footer__bottom">
+      <span>&copy; 2026 Willo Campus. Todos los derechos reservados.</span>
+      <div class="landing-footer__bottom-links">
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>

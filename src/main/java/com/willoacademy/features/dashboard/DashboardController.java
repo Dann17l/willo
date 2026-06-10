@@ -1,5 +1,6 @@
 package com.willoacademy.features.dashboard;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DashboardController {
 
     @GetMapping
-    public String showStudentDashboard() {
+    public String showStudentDashboard(Authentication authentication) {
+        if (authentication != null) {
+            boolean isAdmin = authentication.getAuthorities().stream()
+                    .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+            boolean isTeacher = authentication.getAuthorities().stream()
+                    .anyMatch(a -> a.getAuthority().equals("ROLE_TEACHER"));
+
+            if (isAdmin) {
+                return "redirect:/admin/dashboard";
+            } else if (isTeacher) {
+                return "redirect:/teacher/dashboard";
+            }
+        }
         return "dashboard/student";
     }
 
@@ -32,16 +45,6 @@ public class DashboardController {
     @GetMapping("/settings/security")
     public String showSecurity() {
         return "dashboard/settings/security";
-    }
-
-    @GetMapping("/settings/subscriptions")
-    public String showSubscriptions() {
-        return "dashboard/settings/subscriptions";
-    }
-
-    @GetMapping("/settings/payment")
-    public String showPayment() {
-        return "dashboard/settings/payment";
     }
 
     @GetMapping("/settings/privacy")

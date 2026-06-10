@@ -14,16 +14,7 @@
       <a th:href="@{/dashboard/settings/security}">Seguridad de la cuenta</a>
     </li>
     
-    <!-- Subscriptions -->
-    <li th:classappend="${activeTab == 'subscriptions' ? 'is-active' : ''}">
-      <a th:href="@{/dashboard/settings/subscriptions}">Suscripciones</a>
-    </li>
-    
-    <!-- Payment Methods -->
-    <li th:classappend="${activeTab == 'payment' ? 'is-active' : ''}">
-      <a th:href="@{/dashboard/settings/payment}">Métodos de pago</a>
-    </li>
-    
+
     <!-- Privacy -->
     <li th:classappend="${activeTab == 'privacy' ? 'is-active' : ''}">
       <a th:href="@{/dashboard/settings/privacy}">Privacidad</a>

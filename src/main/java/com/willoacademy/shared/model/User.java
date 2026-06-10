@@ -4,16 +4,16 @@ import com.willoacademy.core.security.Role;
 
 public class User {
     private Long id;
-    private String name;
+    private String fullName;
     private String email;
     private String password;
     private Role role;
 
     public User() {}
 
-    public User(Long id, String name, String email, Role role) {
+    public User(Long id, String fullName, String email, Role role) {
         this.id = id;
-        this.name = name;
+        this.fullName = fullName;
         this.email = email;
         this.role = role;
     }
@@ -21,8 +21,8 @@ public class User {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }

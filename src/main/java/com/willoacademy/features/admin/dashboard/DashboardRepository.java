@@ -20,10 +20,10 @@ public class DashboardRepository {
                 "SELECT COUNT(*) FROM users WHERE last_login > NOW() - INTERVAL '30 days'",
                 Integer.class);
         int publishedCourses = jdbc.queryForObject(
-                "SELECT COUNT(*) FROM courses WHERE status = 'published'",
+                "SELECT COUNT(*) FROM courses WHERE published = true",
                 Integer.class);
         int completedLessons = jdbc.queryForObject(
-                "SELECT COUNT(*) FROM progress WHERE progress = 100",
+                "SELECT COUNT(*) FROM user_progress WHERE completed = true",
                 Integer.class);
         Double revenue = jdbc.queryForObject(
                 "SELECT COALESCE(SUM(amount), 0) FROM payments WHERE status = 'completed'",
@@ -34,13 +34,13 @@ public class DashboardRepository {
 
     public List<Object[]> getWeeklyProgress() {
         String sql = """
-            SELECT TO_CHAR(date_trunc('day', completed_at), 'Dy') AS day,
+            SELECT TO_CHAR(date_trunc('day', updated_at), 'Dy') AS day,
                    COUNT(*) AS count
-            FROM progress
-            WHERE completed_at > NOW() - INTERVAL '7 days'
-              AND progress = 100
-            GROUP BY date_trunc('day', completed_at)
-            ORDER BY date_trunc('day', completed_at)
+            FROM user_progress
+            WHERE updated_at > NOW() - INTERVAL '7 days'
+              AND completed = true
+            GROUP BY date_trunc('day', updated_at)
+            ORDER BY date_trunc('day', updated_at)
         """;
         return jdbc.query(sql, (rs, num) -> new Object[]{
                 rs.getString("day"), rs.getInt("count")

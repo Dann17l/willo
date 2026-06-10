@@ -20,12 +20,16 @@ public class AuthRepository extends BaseRepository<User> {
 
     @Override
     protected org.springframework.jdbc.core.RowMapper<User> rowMapper() {
-        return (rs, rowNum) -> new User(
-                rs.getLong("id"),
-                rs.getString("name"),
-                rs.getString("email"),
-                Role.fromString(rs.getString("role"))
-        );
+        return (rs, rowNum) -> {
+            User user = new User(
+                    rs.getLong("id"),
+                    rs.getString("full_name"),
+                    rs.getString("email"),
+                    Role.fromString(rs.getString("role"))
+            );
+            user.setPassword(rs.getString("password_hash"));
+            return user;
+        };
     }
 
     public Optional<User> findByEmail(String email) {
@@ -35,8 +39,8 @@ public class AuthRepository extends BaseRepository<User> {
     }
 
     public void save(User user, String hashedPassword) {
-        String sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
-        update(sql, user.getName(), user.getEmail(), hashedPassword,
-                user.getRole().name().toLowerCase());
+        String sql = "INSERT INTO users (full_name, email, password_hash, role) VALUES (?, ?, ?, ?)";
+        update(sql, user.getFullName(), user.getEmail(), hashedPassword,
+                user.getRole().name());
     }
 }

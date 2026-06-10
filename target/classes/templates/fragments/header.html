@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
   <header th:fragment="header">
-    <div class="header-logo">Willo Academy</div>
+    <div class="header-logo">Willo Campus</div>
     <nav class="header-nav"
          th:if="${#authentication != null && #authentication.isAuthenticated()}">
       <span class="header-user" sec:authentication="name"></span>

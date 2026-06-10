@@ -1,57 +1,88 @@
 /* ========================================
-   Willo Academy — Landing Page
+   Willo Campus — Landing Page
    ======================================== */
 
 /* ── Theme Variables ─────────────────── */
 :root {
-  /* Light mode (Willo Navy Palette) */
-  --landing-bg: #F0F2F5;
+  /* Light mode (Willo Navy Palette from Brand Manual) */
+  --landing-bg: #F0F1F3;
   --landing-bg-alt: #FFFFFF;
   --landing-surface: #FFFFFF;
-  --landing-surface-hover: #F8FAFC;
-  --landing-text: #1B2D45;
-  --landing-text-secondary: #64748B;
-  --landing-text-muted: #94A3B8;
-  --landing-border: #D1D5DB;
-  --landing-accent: #1B2D45;
-  --landing-accent-hover: #21334A;
-  --landing-accent-glow: rgba(27, 45, 69, 0.25);
-  --landing-accent-soft: rgba(27, 45, 69, 0.08);
-  --landing-gradient-start: #1B2D45;
-  --landing-gradient-end: #243650;
-  --landing-hero-bg: linear-gradient(135deg, #1B2D45 0%, #21334A 50%, #243650 100%);
-  --landing-card-shadow: 0 1px 3px rgba(27, 45, 69, 0.06), 0 4px 12px rgba(27, 45, 69, 0.04);
-  --landing-card-shadow-hover: 0 8px 30px rgba(27, 45, 69, 0.12);
+  --landing-surface-hover: #F0F1F3;
+  --landing-text: #223449;
+  --landing-text-secondary: #616C79;
+  --landing-text-muted: #99A1AA;
+  --landing-border: #CFD3D7;
+  --landing-accent: #223449;
+  --landing-accent-text: #FFFFFF;
+  --landing-accent-hover: #1C2B3D;
+  --landing-accent-glow: rgba(34, 52, 73, 0.25);
+  --landing-accent-soft: rgba(34, 52, 73, 0.08);
+  --landing-gradient-start: #223449;
+  --landing-gradient-end: #616C79;
+  --landing-hero-bg: linear-gradient(135deg, #FFFFFF 0%, #F5F7FA 50%, #E8ECF2 100%);
+  --landing-hero-title: #223449;
+  --landing-hero-subtitle: #616C79;
+  --landing-hero-trust-text: #616C79;
+  --landing-hero-trust-strong: #223449;
+  --landing-hero-trust-avatar-border: #FFFFFF;
+  --landing-hero-scroll-text: #616C79;
+  --landing-hero-particle-color: rgba(34, 52, 73, 0.12);
+  --landing-hero-badge-bg: rgba(34, 52, 73, 0.05);
+  --landing-hero-badge-border: rgba(34, 52, 73, 0.12);
+  --landing-hero-badge-text: #223449;
+  --landing-btn-secondary-bg: #616C79;
+  --landing-btn-secondary-text: #FFFFFF;
+  --landing-btn-secondary-border: 1px solid #616C79;
+  --landing-btn-secondary-hover: #505A65;
+  --landing-card-shadow: 0 1px 3px rgba(34, 52, 73, 0.06), 0 4px 12px rgba(34, 52, 73, 0.04);
+  --landing-card-shadow-hover: 0 8px 30px rgba(34, 52, 73, 0.12);
   --landing-nav-bg: rgba(255, 255, 255, 0.8);
-  --landing-nav-border: rgba(27, 45, 69, 0.08);
-  --landing-footer-bg: #1B2D45;
-  --landing-footer-text: #D1D5DB;
-  --landing-footer-text-muted: #94A3B8;
+  --landing-nav-border: rgba(34, 52, 73, 0.08);
+  --landing-footer-bg: #223449;
+  --landing-footer-text: #CFD3D7;
+  --landing-footer-text-muted: #99A1AA;
 }
 
 [data-theme="dark"] {
-  --landing-bg: #0B121A;
-  --landing-bg-alt: #111A24;
-  --landing-surface: #111A24;
-  --landing-surface-hover: #1B2D45;
-  --landing-text: #F0F2F5;
-  --landing-text-secondary: #94A3B8;
-  --landing-text-muted: #64748B;
-  --landing-border: #21334A;
-  --landing-accent: #38BDF8;
-  --landing-accent-hover: #7DD3FC;
-  --landing-accent-glow: rgba(56, 189, 248, 0.25);
-  --landing-accent-soft: rgba(56, 189, 248, 0.1);
-  --landing-gradient-start: #38BDF8;
-  --landing-gradient-end: #0284C7;
-  --landing-hero-bg: linear-gradient(135deg, #0B121A 0%, #111A24 50%, #1B2D45 100%);
+  /* Dark mode from Brand Manual */
+  --landing-bg: #1A2636;
+  --landing-bg-alt: #1F2F3F;
+  --landing-surface: #1F2F3F;
+  --landing-surface-hover: #283848;
+  --landing-text: #FAFAFA;
+  --landing-text-secondary: #99A1AA;
+  --landing-text-muted: #434D57;
+  --landing-border: #2B3D4F;
+  --landing-accent: #83BDF2;
+  --landing-accent-text: #1A2636;
+  --landing-accent-hover: #add5f7;
+  --landing-accent-glow: rgba(131, 189, 242, 0.25);
+  --landing-accent-soft: rgba(131, 189, 242, 0.1);
+  --landing-gradient-start: #223449;
+  --landing-gradient-end: #99A1AA;
+  --landing-hero-bg: linear-gradient(135deg, #1A2636 0%, #1F2F3F 50%, #283848 100%);
+  --landing-hero-title: #FFFFFF;
+  --landing-hero-subtitle: #B0B0CC;
+  --landing-hero-trust-text: #9090AA;
+  --landing-hero-trust-strong: #D0D0E0;
+  --landing-hero-trust-avatar-border: #1A2636;
+  --landing-hero-scroll-text: rgba(255, 255, 255, 0.35);
+  --landing-hero-particle-color: rgba(131, 189, 242, 0.25);
+  --landing-hero-badge-bg: rgba(131, 189, 242, 0.1);
+  --landing-hero-badge-border: rgba(131, 189, 242, 0.2);
+  --landing-hero-badge-text: #83BDF2;
+  --landing-btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --landing-btn-secondary-text: #FFFFFF;
+  --landing-btn-secondary-border: 1px solid rgba(255, 255, 255, 0.15);
+  --landing-btn-secondary-hover: rgba(255, 255, 255, 0.14);
   --landing-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
-  --landing-card-shadow-hover: 0 8px 30px rgba(56, 189, 248, 0.15);
-  --landing-nav-bg: rgba(11, 18, 26, 0.8);
+  --landing-card-shadow-hover: 0 8px 30px rgba(131, 189, 242, 0.15);
+  --landing-nav-bg: rgba(26, 38, 54, 0.8);
   --landing-nav-border: rgba(255, 255, 255, 0.05);
-  --landing-footer-bg: #0B121A;
-  --landing-footer-text: #94A3B8;
-  --landing-footer-text-muted: #64748B;
+  --landing-footer-bg: #1A2636;
+  --landing-footer-text: #99A1AA;
+  --landing-footer-text-muted: #434D57;
 }
 
 /* ── Reset & Base ────────────────────── */
@@ -208,8 +239,8 @@ img {
   padding: 9px 22px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, var(--landing-gradient-start), var(--landing-gradient-end));
+  color: var(--landing-accent-text);
+  background: var(--landing-accent);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -289,8 +320,8 @@ img {
 }
 
 .landing-nav__mobile-link--cta {
-  background: linear-gradient(135deg, var(--landing-gradient-start), var(--landing-gradient-end));
-  color: #fff;
+  background: var(--landing-accent);
+  color: var(--landing-accent-text);
   text-align: center;
   font-weight: 600;
   margin-top: 4px;
@@ -423,7 +454,7 @@ img {
 
 .landing-hero__particle {
   position: absolute;
-  background: rgba(139, 92, 246, 0.4);
+  background: var(--landing-hero-particle-color);
   border-radius: 50%;
   animation: particleFloat 6s ease-in-out infinite;
 }
@@ -465,9 +496,9 @@ img {
   border-radius: 100px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--landing-accent);
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: var(--landing-hero-badge-text);
+  background: var(--landing-hero-badge-bg);
+  border: 1px solid var(--landing-hero-badge-border);
   margin-bottom: 28px;
   animation: fadeInUp 0.8s ease both;
 }
@@ -475,7 +506,7 @@ img {
 .landing-hero__badge-dot {
   width: 7px;
   height: 7px;
-  background: var(--landing-accent);
+  background: var(--landing-hero-badge-text);
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
 }
@@ -490,17 +521,17 @@ img {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: #FFFFFF;
+  color: var(--landing-hero-title);
   margin-bottom: 24px;
   animation: fadeInUp 0.8s 0.1s ease both;
 }
 
 .landing-hero__title-accent {
-  background: linear-gradient(135deg, var(--landing-gradient-start), var(--landing-gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+background: #1A2636;
+background: linear-gradient(135deg, rgba(26, 38, 54, 1) 0%, rgba(37, 99, 235, 1) 45%, rgba(105, 155, 201, 1) 100%);  -webkit-text-fill-color: transparent;
   background-clip: text;
-}
+  color: transparent;
+  }
 
 /* Typewriter cursor */
 .typewriter-cursor {
@@ -520,7 +551,7 @@ img {
 
 .landing-hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #B0B0CC;
+  color: var(--landing-hero-subtitle);
   max-width: 600px;
   margin: 0 auto 40px;
   line-height: 1.7;
@@ -553,7 +584,7 @@ img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 2px solid rgba(15, 15, 26, 0.8);
+  border: 2px solid var(--landing-hero-trust-avatar-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -569,11 +600,11 @@ img {
 
 .landing-hero__trust-text {
   font-size: 0.88rem;
-  color: #9090AA;
+  color: var(--landing-hero-trust-text);
 }
 
 .landing-hero__trust-text strong {
-  color: #D0D0E0;
+  color: var(--landing-hero-trust-strong);
 }
 
 /* ── Buttons ─────────────────────────── */
@@ -592,8 +623,8 @@ img {
 }
 
 .landing-btn--primary {
-  background: linear-gradient(135deg, var(--landing-gradient-start), var(--landing-gradient-end));
-  color: #FFFFFF;
+  background: var(--landing-accent);
+  color: var(--landing-accent-text);
   box-shadow: 0 4px 20px var(--landing-accent-glow);
 }
 
@@ -603,14 +634,14 @@ img {
 }
 
 .landing-btn--secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--landing-btn-secondary-bg);
+  color: var(--landing-btn-secondary-text);
+  border: var(--landing-btn-secondary-border);
   backdrop-filter: blur(8px);
 }
 
 .landing-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--landing-btn-secondary-hover);
   transform: translateY(-2px);
 }
 
@@ -646,7 +677,7 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--landing-hero-scroll-text);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
